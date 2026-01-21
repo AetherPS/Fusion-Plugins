@@ -1,0 +1,16 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="Release1250" />
+    <BuildType Name="Release1300" />
+    <Platform Name="Any CPU" />
+    <Platform Name="ORBIS" />
+  </Configurations>
+  <Folder Name="/ShellUI/">
+    <Project Path="../Fusion/Fusion/Shell UI/ShellUI/ShellUI.vcxproj">
+      <Platform Project="ORBIS" />
+    </Project>
+    <Project Path="../Fusion/Fusion/Shell UI/ShellUIManaged/ShellUIManaged.csproj" />
+  </Folder>
+</Solution>
