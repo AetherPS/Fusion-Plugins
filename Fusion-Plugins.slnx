@@ -1,16 +1,12 @@
 <Solution>
   <Configurations>
-    <BuildType Name="Debug" />
-    <BuildType Name="Release" />
-    <BuildType Name="Release1250" />
-    <BuildType Name="Release1300" />
     <Platform Name="Any CPU" />
     <Platform Name="ORBIS" />
   </Configurations>
   <Folder Name="/ShellUI/">
-    <Project Path="../Fusion/Fusion/Shell UI/ShellUI/ShellUI.vcxproj">
+    <Project Path="ShellUI/ShellUI/ShellUI.vcxproj" Id="f577677c-9288-403b-8fa2-df060124d399">
       <Platform Project="ORBIS" />
     </Project>
-    <Project Path="../Fusion/Fusion/Shell UI/ShellUIManaged/ShellUIManaged.csproj" />
+    <Project Path="ShellUI/ShellUIManaged/ShellUIManaged.csproj" Id="3f5fec7c-3907-409f-af99-a14bacc1b2f2" />
   </Folder>
 </Solution>
