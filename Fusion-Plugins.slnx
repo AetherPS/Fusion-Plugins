@@ -9,4 +9,7 @@
     </Project>
     <Project Path="ShellUI/ShellUIManaged/ShellUIManaged.csproj" Id="3f5fec7c-3907-409f-af99-a14bacc1b2f2" />
   </Folder>
+  <Project Path="Bootstrapper/Bootstrapper.vcxproj" Id="6b4ddc00-5754-4b2f-af0f-356f29d9a352">
+    <Platform Project="ORBIS" />
+  </Project>
 </Solution>

@@ -51,6 +51,9 @@ extern "C"
         ScePthread thr;
         scePthreadCreate(&thr, 0, [](void* arg) -> void*
         {
+            if (arg != nullptr && *(uint32_t*)arg == 1)
+                sceKernelSleep(3);
+
             Logger::Init(true, Logger::LogLevelAll);
 
             Manager = new DetourManager();
@@ -58,7 +61,7 @@ extern "C"
 
             scePthreadExit(0);
             return 0;
-        }, 0, "ModInit");
+        }, (void*)args, "ModInit");
 
         scePthreadJoin(thr, nullptr);
         return 0;
