@@ -12,4 +12,10 @@
   <Project Path="Bootstrapper/Bootstrapper.vcxproj" Id="6b4ddc00-5754-4b2f-af0f-356f29d9a352">
     <Platform Project="ORBIS" />
   </Project>
+  <Project Path="ShellCore/ShellCore.vcxproj" Id="9f547c5f-7cf2-4d05-83b9-920e9ce894e6">
+    <Platform Project="ORBIS" />
+  </Project>
+  <Project Path="SysCore/SysCore.vcxproj" Id="f18c5201-b86a-4aff-bde4-55f813b3cae7">
+    <Platform Project="ORBIS" />
+  </Project>
 </Solution>
