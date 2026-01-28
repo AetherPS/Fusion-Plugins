@@ -15,18 +15,18 @@ namespace Fusion
         [MethodOverride(typeof(SearchJob))]
         public static void SearchDisc(SearchJob instance)
         {
-            Console.WriteLine("[PackageInstaller] SearchDisc -> custom paths");
+            System.Console.WriteLine("[PackageInstaller] SearchDisc -> custom paths");
 
             foreach (var path in _searchPaths)
             {
                 try
                 {
-                    Console.WriteLine($"[PackageInstaller] Searching: {path}");
-                    Reflect.Call(instance, "SearchDir", path, null);
+                    System.Console.WriteLine($"[PackageInstaller] Searching: {path}");
+                    instance.SearchDir(path);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"[PackageInstaller] Error: {ex.Message}");
+                    System.Console.WriteLine($"[PackageInstaller] Error: {ex.Message}");
                 }
             }
         }

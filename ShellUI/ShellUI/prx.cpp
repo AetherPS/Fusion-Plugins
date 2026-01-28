@@ -1,8 +1,5 @@
 #include "stdafx.h"
 
-extern uint8_t _binary_ShellUIManaged_dll_start[];
-extern uint8_t _binary_ShellUIManaged_dll_end[];
-
 DetourManager* Manager;
 
 void LoadManagedDll()
@@ -10,38 +7,36 @@ void LoadManagedDll()
     MonoDomain* rootDomain = mono_get_root_domain();
     mono_thread_attach(rootDomain);
 
-    MonoImageOpenStatus status;
-    MonoImage* image = mono_image_open_from_data_full(
-        (char*)_binary_ShellUIManaged_dll_start,
-        (uint64_t)&_binary_ShellUIManaged_dll_end - (uint64_t)&_binary_ShellUIManaged_dll_start,
-        1, &status, 0
-    );
-
-    if (status != MONO_IMAGE_OK || !image)
+    MonoAssembly* assembly = mono_domain_assembly_open(mono_get_root_domain(), "/data/Fusion/Plugins/ShellUIManaged.dll");
+    // MonoAssembly* assembly = mono_domain_assembly_open(mono_get_root_domain(), "/hostapp/mono/ShellUIManaged.dll");
+    if (!assembly)
     {
-        Logger::Error("Failed to open image: %d", status);
+        Logger::Error("Failed to load assembly");
         return;
     }
 
-    MonoAssembly* assembly = mono_assembly_load_from_full(image, "ShellUIManaged.dll", &status, 0);
-
-    if (status != MONO_IMAGE_OK || !assembly)
+    MonoImage* image = mono_assembly_get_image(assembly);
+    if (!image)
     {
-        Logger::Error("Failed to load assembly: %d", status);
+        Logger::Error("Failed to get Image.");
         return;
     }
 
-    MonoImage* asmImage = mono_assembly_get_image(assembly);
-    MonoClass* klass = mono_class_from_name(asmImage, "Fusion", "ModuleMain");
-
-    if (klass)
+    MonoClass* klass = mono_class_from_name(image, "Fusion", "ModuleMain");
+    if (!klass)
     {
-        MonoMethod* onLoad = mono_class_get_method_from_name(klass, "OnLoad", 0);
-        if (onLoad)
-        {
-            mono_runtime_invoke(onLoad, nullptr, nullptr, nullptr);
-        }
+        Logger::Error("Failed to get Class.");
+        return;
     }
+
+    MonoMethod* onLoad = mono_class_get_method_from_name(klass, "OnLoad", 0);
+    if (!onLoad)
+    {
+        Logger::Error("Failed to get start method.");
+        return;
+    }
+
+    mono_runtime_invoke(onLoad, nullptr, nullptr, nullptr);
 }
 
 extern "C"
@@ -51,12 +46,12 @@ extern "C"
         ScePthread thr;
         scePthreadCreate(&thr, 0, [](void* arg) -> void*
         {
+            Logger::Init(true, Logger::LogLevelAll);
+            Manager = new DetourManager();
+
             if (arg != nullptr && *(uint32_t*)arg == 1)
                 sceKernelSleep(3);
 
-            Logger::Init(true, Logger::LogLevelAll);
-
-            Manager = new DetourManager();
             LoadManagedDll();
 
             scePthreadExit(0);

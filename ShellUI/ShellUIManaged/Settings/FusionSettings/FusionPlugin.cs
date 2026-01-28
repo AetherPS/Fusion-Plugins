@@ -31,12 +31,12 @@ namespace Fusion
 
         public override void Init()
         {
-            Console.WriteLine("[FusionPlugin] Init");
+            System.Console.WriteLine("[FusionPlugin] Init");
         }
 
         public override void Start()
         {
-            Console.WriteLine("[FusionPlugin] Start");
+            System.Console.WriteLine("[FusionPlugin] Start");
 
             _handlers["id_fusion_menu"] = new FusionMenuHandler(this);
 

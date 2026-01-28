@@ -7,13 +7,13 @@ namespace Fusion.Internal
     {
         public Type TargetType { get; }
         public string TargetMethodName { get; }
-        public string StubFieldName { get; set; }
+        public string DelegateFieldName { get; set; }
 
-        public MethodOverrideAttribute(Type targetType, string targetMethodName = null, string stubFieldName = null)
+        public MethodOverrideAttribute(Type targetType, string targetMethodName = null, string delegateFieldName = null)
         {
             TargetType = targetType;
             TargetMethodName = targetMethodName;
-            StubFieldName = stubFieldName;
+            DelegateFieldName = delegateFieldName;
         }
     }
 }

@@ -19,14 +19,14 @@ namespace Fusion
 
         public override void OnPageActivated(SettingPage page, PageTransitionEventArgs e)
         {
-            Console.WriteLine("[FusionMenu] Activated");
+            System.Console.WriteLine("[FusionMenu] Activated");
         }
 
         public override void OnPreCreate(SettingElement element, ElementCreatingEventArgs e) { }
 
         public override void OnPress(SettingElement element, ElementPressedEventArgs e)
         {
-            Console.WriteLine($"[FusionMenu] Press: {element?.Id}");
+            System.Console.WriteLine($"[FusionMenu] Press: {element?.Id}");
         }
 
         public override void OnBackButtonPress(SettingPage page, ButtonPressedEventArgs e) { }

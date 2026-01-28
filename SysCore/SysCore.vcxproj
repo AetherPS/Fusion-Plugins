@@ -46,11 +46,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <OutDir>$(SolutionDir)Build\UnSigned\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <OutDir>$(SolutionDir)Build\UnSigned\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
@@ -67,7 +67,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)External\StubMaker\Build;$(SolutionDir)External\libUtils\Build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(OutputPath)$(TargetName).sprx</Command>
+      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(SolutionDir)Build\$(TargetName).sprx</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
@@ -86,7 +86,7 @@
       <DuplicateStripping>true</DuplicateStripping>
     </Link>
     <PostBuildEvent>
-      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(OutputPath)$(TargetName).sprx</Command>
+      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(SolutionDir)Build\$(TargetName).sprx</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

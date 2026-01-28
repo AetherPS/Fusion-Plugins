@@ -1,8 +1,6 @@
 ﻿using Fusion.Internal;
-using Sce.PlayStation.PUI;
 using Sce.Vsh.Accessor;
 using Sce.Vsh.Accessor.Db;
-using Sce.Vsh.Lx;
 using Sce.Vsh.ShellUI.AppSystem;
 using Sce.Vsh.ShellUI.Base;
 using Sce.Vsh.ShellUI.Library;
@@ -10,22 +8,15 @@ using Sce.Vsh.ShellUI.TopMenu;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace Fusion.Features.Devkit
 {
     internal static class DevkitContent
     {
-        private unsafe delegate int ExecuteCountQueryDelegate(IntPtr instance);
-        private unsafe delegate IntPtr ExecuteSelectQueryDelegate(IntPtr instance, int offset, int limit);
-        private unsafe delegate IntPtr GetIconPathDelegate(IntPtr item, bool withTheme);
-        private unsafe delegate void LoadFocusInfoDelegate(IntPtr instance);
-
-        private static ExecuteCountQueryDelegate _ExecuteCountQuery_stub;
-        private static ExecuteSelectQueryDelegate _ExecuteSelectQuery_stub;
-        private static ExecuteSelectQueryDelegate _ExecuteSelectQueryForIndex_stub;
-        private static GetIconPathDelegate _GetIconPath_stub;
-        private static LoadFocusInfoDelegate _LoadFocusInfo_stub;
+        private static IntPtr _ExecuteCountQuery_stub;
+        private static IntPtr _ExecuteSelectQuery_stub;
+        private static IntPtr _ExecuteSelectQueryForIndex_stub;
+        private static IntPtr _GetIconPath_stub;
 
         private static IList<AppBrowseItem> MemoryItemList
         {
@@ -151,25 +142,31 @@ namespace Fusion.Features.Devkit
         [MethodOverride(typeof(AppBrowseItemAccessor))]
         public static unsafe int ExecuteCountQuery(AppBrowseItemAccessor instance)
         {
-            int count = _ExecuteCountQuery_stub(*(IntPtr*)&instance);
+            int count = ((delegate* unmanaged[Cdecl]<IntPtr, int>)_ExecuteCountQuery_stub)(*(IntPtr*)&instance);
 
-            if (Reflect.Get<AppBrowseItemAccessor.FilterTypeAppHome>(instance, "exclusionFilterTypeAppHome") != AppBrowseItemAccessor.FilterTypeAppHome.None)
+            if (instance == null)
                 return count;
-            
+
+            if (instance.exclusionFilterTypeAppHome != AppBrowseItemAccessor.FilterTypeAppHome.None)
+                return count;
+
             return count + MemoryItemList.Count;
         }
 
         [MethodOverride(typeof(AppBrowseItemAccessor))]
         public static unsafe List<Item> ExecuteSelectQuery(AppBrowseItemAccessor instance, int offset, int limit)
         {
-            IntPtr resultPtr = _ExecuteSelectQuery_stub(*(IntPtr*)&instance, offset, limit);
+            IntPtr resultPtr = ((delegate* unmanaged[Cdecl]<IntPtr, int, int, IntPtr>)_ExecuteSelectQuery_stub)(
+                *(IntPtr*)&instance,
+                offset,
+                limit
+            );
             List<Item> result = *(List<Item>*)&resultPtr;
 
-            if (Reflect.Get<AppBrowseItemAccessor.FilterTypeAppHome>(instance, "exclusionFilterTypeAppHome") != AppBrowseItemAccessor.FilterTypeAppHome.None)
+            if (instance.exclusionFilterTypeAppHome != AppBrowseItemAccessor.FilterTypeAppHome.None)
                 return result;
 
             List<Item> list = new List<Item>();
-
             List<AppBrowseItem> memoryItemList = GetMemoryItemList(ref offset, ref limit);
             if (memoryItemList != null)
             {
@@ -183,21 +180,23 @@ namespace Fusion.Features.Devkit
                     });
                 }
             }
-
             return list.Concat(result).ToList();
         }
 
         [MethodOverride(typeof(AppBrowseItemAccessor))]
         public static unsafe List<Item> ExecuteSelectQueryForIndex(AppBrowseItemAccessor instance, int offset, int limit)
         {
-            IntPtr resultPtr = _ExecuteSelectQueryForIndex_stub(*(IntPtr*)&instance, offset, limit);
+            IntPtr resultPtr = ((delegate* unmanaged[Cdecl]<IntPtr, int, int, IntPtr>)_ExecuteSelectQueryForIndex_stub)(
+                *(IntPtr*)&instance,
+                offset,
+                limit
+            );
             List<Item> result = *(List<Item>*)&resultPtr;
 
-            if (Reflect.Get<AppBrowseItemAccessor.FilterTypeAppHome>(instance, "exclusionFilterTypeAppHome") != AppBrowseItemAccessor.FilterTypeAppHome.None)
+            if (instance.exclusionFilterTypeAppHome != AppBrowseItemAccessor.FilterTypeAppHome.None)
                 return result;
 
             List<Item> list = new List<Item>();
-
             List<AppBrowseItem> memoryItemList = GetMemoryItemList(ref offset, ref limit);
             if (memoryItemList != null)
             {
@@ -209,7 +208,6 @@ namespace Fusion.Features.Devkit
                     });
                 }
             }
-
             return list.Concat(result).ToList();
         }
 
@@ -230,124 +228,27 @@ namespace Fusion.Features.Devkit
                 return BasePlugin.GetTexture("tex_debug_settings");
             }
 
-            IntPtr resultPtr = _GetIconPath_stub(*(IntPtr*)&item, withTheme);
+            IntPtr resultPtr = ((delegate* unmanaged[Cdecl]<IntPtr, bool, IntPtr>)_GetIconPath_stub)(
+                *(IntPtr*)&item,
+                withTheme
+            );
             return *(string*)&resultPtr;
         }
 
-        //[MethodOverride(typeof(ContentsList))]
-        //private static unsafe void LoadFocusInfo(ContentsList instance)
-        //{
-        //    _LoadFocusInfo_stub(*(IntPtr*)&instance);
-            
-        //    if (instance.FolderAppBrowseItem == null)
-        //    {
-        //        instance.SetDefaultFocusIndex(MemoryItemList.Count + 1);
-        //    }
-        //}
-
-        //[MethodOverride(typeof(ContentsList))]
-        //public static bool SetFocusToHome(ContentsList instance)
-        //{
-        //    int val = MemoryItemList.Count + 2;
-        //    if (0 < instance.GridListPanel.ItemCount)
-        //    {
-        //        int num = Math.Min(val, instance.GridListPanel.ItemCount - 1);
-        //        if (instance.GridListPanel.FocusIndex != num)
-        //        {
-        //            instance.SetFocusIndex(num, true, false);
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //[MethodOverride(typeof(ContentsList))]
-        //private static void DoReorder(ContentsList instance, long delayLimit = 0L)
-        //{
-        //    if (instance.Disposed || ThemePreview.Enabled || instance.FolderAppBrowseItem != null)
-        //    {
-        //        return;
-        //    }
-
-        //    if (Reflect.Get<bool>(instance, "m_reorderBlocked"))
-        //    {
-        //        Reflect.Set(instance, "m_reorderDirty", true);
-        //        return;
-        //    }
-
-        //    string titleId = ContentAreaScene.GetLayerFocusTarget(LayerManager.GetFocusLayer());
-        //    if (titleId.Empty())
-        //    {
-        //        return;
-        //    }
-
-        //    RefObj<CachedItemAccessor> accessorReference = instance.GetAppBrowseItemAccessorReference();
-        //    if (accessorReference == null)
-        //    {
-        //        return;
-        //    }
-
-        //    AppBrowseItemAccessor accessor = accessorReference.Body.accessor as AppBrowseItemAccessor;
-
-        //    int userId = Reflect.GetProp<int>(typeof(TopMenuPlugin), "UserId");
-        //    Reflect.Call(instance, "PostJob", new object[] 
-        //    {
-        //        1,
-        //        UT.Enqueue(ListViewManager.GetFastJobQueue(),
-        //        delegate (Job job)
-        //        {
-        //            AppBrowseItem itemByTitleId = AppBrowseItemMethodExteneder.GetItemByTitleId(userId, titleId);
-        //            if (itemByTitleId != null)
-        //            {
-        //                bool flag = false;
-        //                string text = "";
-        //                if (itemByTitleId.IsVisibleTvAndVideoItem() && !itemByTitleId.IsVisibleContentAreaItem())
-        //                {
-        //                    flag = true;
-        //                    titleId = TvItemManager.GetTvItemStatus().GetAttachedTitleId(titleId);
-        //                    if (!AppBrowseItemMethodExteneder.GetItemByTitleId(userId, titleId).IsVisibleContentAreaItem())
-        //                    {
-        //                        return;
-        //                    }
-        //                }
-        //                else if (itemByTitleId.IsInFolder())
-        //                {
-        //                    text = itemByTitleId.GetParentFolderId();
-        //                }
-
-        //                int num = MemoryItemList.Count + 2 + 1;
-        //                List<Item> items = accessor.GetItems(0, num);
-        //                if (items.Count >= num)
-        //                {
-        //                    AppBrowseItem item = items[num - 1] as AppBrowseItem;
-        //                    if (!(item.GetTitleId() == titleId) && (text.Empty() || !(item.GetTitleId() == text)))
-        //                    {
-        //                        while (UT.ElapsedMilliseconds < delayLimit && !job.IsCancelled)
-        //                        {
-        //                            Thread.Sleep(1);
-        //                        }
-
-        //                        if (!job.IsCancelled)
-        //                        {
-        //                            if (flag)
-        //                            {
-        //                                TvItemManager.Push(titleId);
-        //                            }
-        //                            else
-        //                            {
-        //                                AppBrowseAccessorWrapper.UpdateLastAccessTime(titleId);
-        //                            }
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        },
-        //        delegate (JobCompletedEventArgs obj)
-        //        {
-        //            obj.NoThrow();
-        //            accessorReference.Dispose();
-        //        })
-        //    });
-        //}
+        // This one doesn't need a stub since it doesn't call the original
+        [MethodOverride(typeof(ApplicationMonitor.AppConfig))]
+        public static bool IsLaunchable(string titleId)
+        {
+            if (titleId.IndexOf("NPXS20") == 0)
+            {
+                return true;
+            }
+            if (titleId == "NPXS21008" || titleId == "NPXS27003" || titleId == "NPXS27009" ||
+                titleId == "NPXS29998" || titleId == "NPXS29999")
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <FileUtils.h>
 
 extern "C"
 {
@@ -8,6 +9,10 @@ extern "C"
 		scePthreadCreate(&thr, 0, [](void* arg) -> void*
 		{
 			Logger::Init(true, Logger::LogLevelAll);
+
+			// Mount system as R/W
+			RemountReadWrite("/dev/da0x4.crypt", "/system");
+			RemountReadWrite("/dev/da0x5.crypt", "/system_ex");
 
 			// Initialize offsets by firmware.
 			if (!Offsets::Init())

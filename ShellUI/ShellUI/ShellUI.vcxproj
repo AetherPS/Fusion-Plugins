@@ -52,11 +52,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <OutDir>$(SolutionDir)Build\UnSigned\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
-    <OutDir>$(SolutionDir)Build\</OutDir>
+    <OutDir>$(SolutionDir)Build\UnSigned\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ORBIS'">
@@ -71,14 +71,15 @@
     <Link>
       <Addressing>NonAslr</Addressing>
       <AdditionalLibraryDirectories>$(SolutionDir)External\StubMaker\Build;$(SolutionDir)External\libFusionDriver\Build;$(SolutionDir)External\libUtils\Build;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(Configuration)\ShellUIManaged.o</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(OutputPath)$(TargetName).sprx</Command>
+      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(SolutionDir)Build\$(TargetName).sprx</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>cd $(ProjectDir)Resources
-"$(SCE_ORBIS_SDK_DIR)\host_tools\bin\orbis-objcopy.exe" -I binary -O elf64-x86-64 -B i386:x86-64 "ShellUIManaged.dll" "$(ProjectDir)$(IntermediateOutputPath)ShellUIManaged.o"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ORBIS'">
@@ -95,14 +96,15 @@
       <InfoStripping>StripSymsAndDebug</InfoStripping>
       <DataStripping>StripFuncsAndData</DataStripping>
       <DuplicateStripping>true</DuplicateStripping>
-      <AdditionalDependencies>$(Configuration)\ShellUIManaged.o</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(OutputPath)$(TargetName).sprx</Command>
+      <Command>py "$(SolutionDir)Scripts\make_fself.py" $(OutputPath)$(TargetName).prx $(SolutionDir)Build\$(TargetName).sprx</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>cd $(ProjectDir)Resources
-"$(SCE_ORBIS_SDK_DIR)\host_tools\bin\orbis-objcopy.exe" -I binary -O elf64-x86-64 -B i386:x86-64 "ShellUIManaged.dll" "$(ProjectDir)$(IntermediateOutputPath)ShellUIManaged.o"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -116,11 +118,6 @@
   <ItemGroup>
     <ClInclude Include="Exports.h" />
     <ClInclude Include="stdafx.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ShellUIManaged\ShellUIManaged.csproj">
-      <Project>{3f5fec7c-3907-409f-af99-a14bacc1b2f2}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -7,13 +7,13 @@ using Sce.Vsh.ShellUI.AppSystem;
 using Sce.Vsh.ShellUI.Library;
 using Sce.Vsh.ShellUI.TopMenu;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Fusion.Features.Devkit
 {
     public static class DevkitTitleIdLabel
     {
-        private unsafe delegate void ContentDecoratorBase_ctorDelegate(IntPtr instance, IntPtr param);
-        private static ContentDecoratorBase_ctorDelegate _ContentDecoratorBase_ctor_stub;
+        private static IntPtr _ContentDecoratorBase_ctor_stub;
         private static bool _showLabels = false;
 
         public static bool ShowLabels
@@ -35,7 +35,12 @@ namespace Fusion.Features.Devkit
         [MethodOverride(typeof(ContentDecoratorBase), ".ctor")]
         public static unsafe void ContentDecoratorBase_ctor(ContentDecoratorBase instance, ContentDecoratorParam param)
         {
-            _ContentDecoratorBase_ctor_stub(*(IntPtr*)&instance, *(IntPtr*)&param);
+            // Convert to function pointer and call
+            ((delegate* unmanaged[Cdecl]<IntPtr, ContentDecoratorParam, void>)_ContentDecoratorBase_ctor_stub)(
+                *(IntPtr*)&instance,
+                param
+            );
+
             if (_showLabels)
             {
                 CreateLabel(instance);
@@ -46,7 +51,7 @@ namespace Fusion.Features.Devkit
         {
             try
             {
-                var iconImageBox = Reflect.Get<ImageBox>(instance, "m_iconImageBox");
+                var iconImageBox = instance.m_iconImageBox;
                 if (iconImageBox == null)
                     return;
 
@@ -76,7 +81,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DebugTitleIdLabel] CreateLabel error: {ex.Message}");
+                System.Console.WriteLine($"[DebugTitleIdLabel] CreateLabel error: {ex.Message}");
             }
         }
 
@@ -84,7 +89,7 @@ namespace Fusion.Features.Devkit
         {
             try
             {
-                var iconImageBox = Reflect.Get<ImageBox>(instance, "m_iconImageBox");
+                var iconImageBox = instance.m_iconImageBox;
                 if (iconImageBox == null)
                     return;
 
@@ -100,7 +105,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DebugTitleIdLabel] RemoveLabel error: {ex.Message}");
+                System.Console.WriteLine($"[DebugTitleIdLabel] RemoveLabel error: {ex.Message}");
             }
         }
 
@@ -108,8 +113,8 @@ namespace Fusion.Features.Devkit
         {
             try
             {
-                var scene = Reflect.Get<object>(ContentsAreaManager.Instance, "m_scene");
-                var gridList = Reflect.Get<GridListPanel[]>(scene, "m_contentsGridList");
+                var scene = ContentsAreaManager.Instance.m_scene;
+                var gridList = scene.m_contentsGridList;
 
                 foreach (var grid in gridList)
                 {
@@ -129,7 +134,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DebugTitleIdLabel] ForEachDecorator error: {ex.Message}");
+                System.Console.WriteLine($"[DebugTitleIdLabel] ForEachDecorator error: {ex.Message}");
             }
         }
 

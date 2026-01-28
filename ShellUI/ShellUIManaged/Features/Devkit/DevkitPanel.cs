@@ -3,6 +3,7 @@ using Sce.PlayStation.PUI;
 using Sce.PlayStation.PUI.UI2;
 using Sce.Vsh.ShellUI.TopMenu;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Fusion.Features.Devkit
 {
@@ -14,11 +15,8 @@ namespace Fusion.Features.Devkit
         private static DateTime _lastOriginalUpdate = DateTime.MinValue;
         private static readonly TimeSpan OriginalUpdateInterval = TimeSpan.FromSeconds(2);
 
-        private unsafe delegate void AreaManager_ctorDelegate(IntPtr instance);
-        private unsafe delegate void UpdateDevKitPanelDelegate(IntPtr instance);
-
-        private static AreaManager_ctorDelegate _AreaManager_ctor_stub;
-        private static UpdateDevKitPanelDelegate _UpdateDevKitPanel_stub;
+        private static IntPtr _AreaManager_ctor_stub;
+        private static IntPtr _UpdateDevKitPanel_stub;
 
         public static bool ShowPanel
         {
@@ -40,17 +38,17 @@ namespace Fusion.Features.Devkit
             }
         }
 
-        [MethodOverride(typeof(AreaManager), ".ctor")]
+        [MethodOverride(typeof(AreaManager), ".ctor", DelegateFieldName = nameof(_AreaManager_ctor_stub))]
         public static unsafe void AreaManager_Constructor(AreaManager instance)
         {
-            _AreaManager_ctor_stub(*(IntPtr*)&instance);
+            ((delegate* unmanaged[Cdecl]<IntPtr, void>)_AreaManager_ctor_stub)(*(IntPtr*)&instance);
             if (ShowPanel)
             {
                 Create(instance);
             }
         }
 
-        [MethodOverride(typeof(AreaManager), "updateDevKitPanel")]
+        [MethodOverride(typeof(AreaManager), "updateDevKitPanel", DelegateFieldName = nameof(_UpdateDevKitPanel_stub))]
         public static unsafe void UpdateDevKitPanel(AreaManager instance)
         {
             try
@@ -58,50 +56,48 @@ namespace Fusion.Features.Devkit
                 UpdateTimerInterval();
                 if (RainbowBackground)
                 {
-                    // Update rainbow color
-                    _hue += .5f; // Adjust speed of color change
+                    _hue += .5f;
                     if (_hue >= 360f)
                         _hue = 0f;
+
                     var color = HSVToRGB(_hue, 1.0f, 1.0f, 0.8f);
-                    var devKitPanel = Reflect.Get<Panel>(instance, "m_devKitPanel");
+                    var devKitPanel = instance.m_devKitPanel;
                     if (devKitPanel != null)
                     {
                         devKitPanel.BackgroundColor = color;
                     }
-                    // Only call original every 2 seconds
+
                     var now = DateTime.Now;
                     if (now - _lastOriginalUpdate >= OriginalUpdateInterval)
                     {
-                        _UpdateDevKitPanel_stub(*(IntPtr*)&instance);
+                        ((delegate* unmanaged[Cdecl]<IntPtr, void>)_UpdateDevKitPanel_stub)(*(IntPtr*)&instance);
                         _lastOriginalUpdate = now;
                     }
                 }
                 else
                 {
-                    // Normal behavior - call original
-                    _UpdateDevKitPanel_stub(*(IntPtr*)&instance);
+                    ((delegate* unmanaged[Cdecl]<IntPtr, void>)_UpdateDevKitPanel_stub)(*(IntPtr*)&instance);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DevkitPanel] UpdateDevKitPanel_Hook failed: {ex.Message}");
-                // Fallback to original on error
-                _UpdateDevKitPanel_stub(*(IntPtr*)&instance);
+                System.Console.WriteLine($"[DevkitPanel] UpdateDevKitPanel_Hook failed: {ex.Message}");
+                ((delegate* unmanaged[Cdecl]<IntPtr, void>)_UpdateDevKitPanel_stub)(*(IntPtr*)&instance);
             }
         }
 
-        public static void Create(object instance)
+        public static void Create(AreaManager instance)
         {
-            Reflect.Call(instance, "createDevKitPanel");
+            instance.createDevKitPanel();
             UpdateTimerInterval();
             SetColour(instance, 0.0f, 0.0f, 0.0f, 0.5f);
         }
 
-        public static void SetColour(object instance, float r, float g, float b, float a)
+        public static void SetColour(AreaManager instance, float r, float g, float b, float a)
         {
             try
             {
-                var devKitPanel = Reflect.Get<Panel>(instance, "m_devKitPanel");
+                var devKitPanel = instance.m_devKitPanel;
 
                 if (devKitPanel != null)
                 {
@@ -110,7 +106,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DevkitPanel] SetColour failed: {ex.Message}");
+                System.Console.WriteLine($"[DevkitPanel] SetColour failed: {ex.Message}");
             }
         }
 
@@ -128,11 +124,11 @@ namespace Fusion.Features.Devkit
             {
                 if (AreaManager.Instance == null)
                 {
-                    Console.WriteLine("[DevkitPanel] AreaManager.Instance is null");
+                    System.Console.WriteLine("[DevkitPanel] AreaManager.Instance is null");
                     return;
                 }
 
-                var devKitPanel = Reflect.Get<Panel>(AreaManager.Instance, "m_devKitPanel");
+                var devKitPanel = AreaManager.Instance.m_devKitPanel;
 
                 // If m_devKitPanel is null we must create the panel first
                 if (devKitPanel == null)
@@ -141,7 +137,7 @@ namespace Fusion.Features.Devkit
                 }
                 else
                 {
-                    var updatePanelTimer = Reflect.Get<UITimer>(AreaManager.Instance, "m_updatePanelTimer");
+                    var updatePanelTimer = AreaManager.Instance.m_updatePanelTimer;
 
                     // If the m_updatePanelTimer is initialized start the timer
                     if (updatePanelTimer != null)
@@ -156,7 +152,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DevkitPanel] Show failed: {ex.Message}");
+                System.Console.WriteLine($"[DevkitPanel] Show failed: {ex.Message}");
             }
         }
 
@@ -167,7 +163,7 @@ namespace Fusion.Features.Devkit
                 if (AreaManager.Instance == null)
                     return;
 
-                var updatePanelTimer = Reflect.Get<UITimer>(AreaManager.Instance, "m_updatePanelTimer");
+                var updatePanelTimer = AreaManager.Instance.m_updatePanelTimer;
 
                 // If the m_updatePanelTimer is initialized stop the timer
                 if (updatePanelTimer != null)
@@ -176,7 +172,7 @@ namespace Fusion.Features.Devkit
                 }
 
                 // Hide the panel
-                var devKitPanel = Reflect.Get<Panel>(AreaManager.Instance, "m_devKitPanel");
+                var devKitPanel = AreaManager.Instance.m_devKitPanel;
                 if (devKitPanel != null)
                 {
                     devKitPanel.Hide();
@@ -186,7 +182,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DevkitPanel] Hide failed: {ex.Message}");
+                System.Console.WriteLine($"[DevkitPanel] Hide failed: {ex.Message}");
             }
         }
 
@@ -197,8 +193,8 @@ namespace Fusion.Features.Devkit
                 if (AreaManager.Instance == null)
                     return false;
 
-                var devKitPanel = Reflect.Get<Panel>(AreaManager.Instance, "m_devKitPanel");
-                var updatePanelTimer = Reflect.Get<UITimer>(AreaManager.Instance, "m_updatePanelTimer");
+                var devKitPanel = AreaManager.Instance.m_devKitPanel;
+                var updatePanelTimer = AreaManager.Instance.m_updatePanelTimer;
 
                 if (devKitPanel != null && updatePanelTimer != null)
                 {
@@ -209,7 +205,7 @@ namespace Fusion.Features.Devkit
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DevkitPanel] GetState failed: {ex.Message}");
+                System.Console.WriteLine($"[DevkitPanel] GetState failed: {ex.Message}");
                 return false;
             }
         }
@@ -221,16 +217,16 @@ namespace Fusion.Features.Devkit
                 if (AreaManager.Instance == null)
                     return;
 
-                var updatePanelTimer = Reflect.Get<UITimer>(AreaManager.Instance, "m_updatePanelTimer");
+                var updatePanelTimer = AreaManager.Instance.m_updatePanelTimer;
 
                 if (updatePanelTimer != null)
                 {
-                    Reflect.SetProp(updatePanelTimer, "Interval", RainbowBackground ? 0.01f : 2.0f);
+                    updatePanelTimer.Interval = RainbowBackground ? 0.01f : 2.0f;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"[DevkitPanel] UpdateTimerInterval failed: {ex.Message}");
+                System.Console.WriteLine($"[DevkitPanel] UpdateTimerInterval failed: {ex.Message}");
             }
         }
 

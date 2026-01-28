@@ -3,18 +3,18 @@ using Sce.PlayStation.PUI.UI2;
 using Sce.Vsh.ShellUI.TopMenu;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Fusion.TopMenu
 {
     internal class SystemAreaPanelHooks
     {
-        private unsafe delegate void SysItemInitDelegate(IntPtr instance);
-        private static SysItemInitDelegate _SysItemInit_stub;
+        private static IntPtr _SysItemInit_stub;
 
         public static void AddFusionMenu(SystemAreaPanel instance)
         {
-            var m_baseWidget = Reflect.Get<Widget>(instance, "m_baseWidget");
-            var m_systemAreaIconList = Reflect.Get<List<SystemAreaIconBase>>(instance, "m_systemAreaIconList");
+            var m_baseWidget = instance.m_baseWidget;
+            var m_systemAreaIconList = instance.m_systemAreaIconList;
 
             // Create the panel
             var fusionPanel = new Panel()
@@ -34,14 +34,14 @@ namespace Fusion.TopMenu
             // Insert at the beginning (leftmost position)
             m_systemAreaIconList.Insert(0, fusionIcon);
 
-            Reflect.Call(instance, "createVoiceGuide", new object[] { "Fusion" });
+            instance.createVoiceGuide("Fusion");
         }
 
         [MethodOverride(typeof(SystemAreaPanel))]
         public static unsafe void SysItemInit(SystemAreaPanel instance)
         {
             AddFusionMenu(instance);
-            _SysItemInit_stub(*(IntPtr*)&instance);
+            ((delegate* unmanaged[Cdecl]<IntPtr, void>)_SysItemInit_stub)(*(IntPtr*)&instance);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Fusion.Features
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                System.Console.WriteLine(e.ToString());
             }
             return 0;
         }

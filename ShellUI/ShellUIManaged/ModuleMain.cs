@@ -22,7 +22,7 @@ namespace Fusion
 
             try
             {
-                Console.WriteLine("=== Fusion UI Loading ===");
+                System.Console.WriteLine("=== Fusion UI Loading ===");
 
                 ManifestFileUriScheme.Initialize();
                 MethodOverrideManager.Initialize();
@@ -34,17 +34,17 @@ namespace Fusion
                 // Register custom plugin
                 SettingsApplicationHooks.RegisterPlugin<FusionPlugin>(FusionPlugin.PluginName);
 
-                var m_systemAreaPanel = Reflect.Get<SystemAreaPanel>(SystemAreaManager.Instance, "m_systemAreaPanel");
+                var m_systemAreaPanel = SystemAreaManager.Instance.m_systemAreaPanel;
                 SystemAreaPanelHooks.AddFusionMenu(m_systemAreaPanel);
 
-                Console.WriteLine("=== Fusion UI Loaded ===");
+                System.Console.WriteLine("=== Fusion UI Loaded ===");
 
                 WelcomeMessage.DoWelcome();
             }
             catch (Exception ex)
             {
                 // Log exception (if you have logging)
-                Console.WriteLine($"OnLoad failed: {ex.Message}");
+                System.Console.WriteLine($"OnLoad failed: {ex.Message}");
                 throw;
             }
         }
@@ -57,7 +57,7 @@ namespace Fusion
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"OnUnload failed: {ex.Message}");
+                System.Console.WriteLine($"OnUnload failed: {ex.Message}");
             }
         }
     }

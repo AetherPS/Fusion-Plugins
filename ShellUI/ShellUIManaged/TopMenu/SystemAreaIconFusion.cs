@@ -21,7 +21,7 @@ namespace Fusion.TopMenu
             base.Dispose();
         }
 
-        protected override void InitIcon()
+        public override void InitIcon()
         {
             // Find or create the icon image
             m_iconImage = (ImageBox)basePanel.FindChildByName("FusionImage");
@@ -113,13 +113,13 @@ namespace Fusion.TopMenu
             base.IconKeyEventReceived(sender, args);
         }
 
-        protected override string GetGlowPath()
+        public override string GetGlowPath()
         {
             // You can return null or provide a glow texture path
             return null;
         }
 
-        protected override bool EnabledFocusEffect()
+        public override bool EnabledFocusEffect()
         {
             // For now, disable custom glow effect
             return false;
@@ -136,7 +136,7 @@ namespace Fusion.TopMenu
 
         private void LaunchPlugin()
         {
-            Console.WriteLine("[Fusion] Launching Fusion Menu via URI: " + LaunchUrl);
+            System.Console.WriteLine("[Fusion] Launching Fusion Menu via URI: " + LaunchUrl);
             BootHelper.Boot(LaunchUrl, BootHelper.Option.None, null, null);
         }
 

@@ -63,19 +63,19 @@ namespace Fusion.Internal
 
                     // Create texture on the background thread before returning to main thread
                     // This is inherited from ImageLoadFinishAction
-                    Reflect.Call(this, "CreateTextureIfNeeded");
+                    this.CreateTextureIfNeeded();
 
                     return Image != null;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to load manifest resource: {ManifestPath}");
-                    Console.WriteLine(ex.ToString());
+                    System.Console.WriteLine($"Failed to load manifest resource: {ManifestPath}");
+                    System.Console.WriteLine(ex.ToString());
                     return false;
                 }
             }
 
-            protected override void NotifyComplete(AsyncCompletedEventArgs args, AssetObject obj)
+            public override void NotifyComplete(AsyncCompletedEventArgs args, AssetObject obj)
             {
                 if (obj != null)
                 {
