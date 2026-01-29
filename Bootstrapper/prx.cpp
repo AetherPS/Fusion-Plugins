@@ -2,20 +2,48 @@
 
 #define INI_PATH "/data/Fusion/PluginList.ini"
 
+void Exit()
+{
+	size_t moduleCount = 0;
+	int moduleList[256];
+	sceKernelGetModuleList(moduleList, 256, &moduleCount);
+
+	for (int i = 0; i < moduleCount; i++)
+	{
+		SceKernelModuleInfo info;
+		info.size = sizeof(SceKernelModuleInfo);
+		sceKernelGetModuleInfo(moduleList[i], &info);
+
+		Logger::Info("[Bootstrapper] %s", info.name);
+
+		if (strstr(info.name, "Bootstrapper"))
+		{
+			Logger::Info("[Bootstrapper] Unloading Bootstrapper module.");
+			sceKernelStopUnloadModule(moduleList[i], 0, nullptr, 0, nullptr, nullptr);
+			break;
+		}
+	}
+
+	Logger::Info("[Bootstrapper] Shutting down...");
+	scePthreadExit(0);
+}
+
 extern "C"
 {
 	int __cdecl module_start(size_t argc, const void* args)
 	{
+		Logger::Init(true, Logger::LogLevelAll);
+		Logger::Info("[Bootstrapper] Starting up...");
+
 		ScePthread thr;
 		scePthreadCreate(&thr, 0, [](void* arg) -> void*
 		{
-			Logger::Init(true, Logger::LogLevelAll);
-
 			// Get the app info for the title Id.
 			SceAppInfo info{};
 			if (sceKernelGetAppInfo(getpid(), &info) != 0)
 			{
-				scePthreadExit(0);
+				Logger::Error("[Bootstrapper] Failed to get app info.");
+				Exit();
 				return 0;
 			}
 
@@ -23,7 +51,8 @@ extern "C"
 			IniParser ini;
 			if (!ini.Load(INI_PATH))
 			{
-				scePthreadExit(0);
+				Logger::Error("[Bootstrapper] Failed to load INI from path '%s'", INI_PATH);
+				Exit();
 				return 0;
 			}
 
@@ -55,9 +84,9 @@ extern "C"
 				}
 			}
 
-			scePthreadExit(0);
+			Exit();
 			return 0;
-		}, 0, "Init");
+		}, 0, "BootStrapper");
 		scePthreadJoin(thr, nullptr);
 
 		return 0;
