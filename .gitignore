@@ -18,6 +18,7 @@
 Fusion-*.bin
 *.compressed
 *.sym
+*.exe
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
