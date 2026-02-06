@@ -4,26 +4,6 @@
 
 void Exit()
 {
-	size_t moduleCount = 0;
-	int moduleList[256];
-	sceKernelGetModuleList(moduleList, 256, &moduleCount);
-
-	for (int i = 0; i < moduleCount; i++)
-	{
-		SceKernelModuleInfo info;
-		info.size = sizeof(SceKernelModuleInfo);
-		sceKernelGetModuleInfo(moduleList[i], &info);
-
-		Logger::Info("[Bootstrapper] %s", info.name);
-
-		if (strstr(info.name, "Bootstrapper"))
-		{
-			Logger::Info("[Bootstrapper] Unloading Bootstrapper module.");
-			sceKernelStopUnloadModule(moduleList[i], 0, nullptr, 0, nullptr, nullptr);
-			break;
-		}
-	}
-
 	Logger::Info("[Bootstrapper] Shutting down...");
 	scePthreadExit(0);
 }
@@ -94,7 +74,7 @@ extern "C"
 
 	int __cdecl module_stop(size_t argc, const void* args)
 	{
-
+		Logger::Info("[Bootstrapper] Stopping...");
 		return 0;
 	}
 }
