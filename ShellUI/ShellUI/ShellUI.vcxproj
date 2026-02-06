@@ -64,7 +64,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)External\StubMaker\Include;$(SolutionDir)External\FusionShared;$(SolutionDir)External\libFusionDriver\Include;$(SolutionDir)External\libUtils\libUtils;$(SolutionDir)External\libUtils\libDetour;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\StubMaker\Include;$(SolutionDir)External\libFusionDriver\External\FusionShared;$(SolutionDir)External\libFusionDriver\Include;$(SolutionDir)External\libUtils\libUtils;$(SolutionDir)External\libUtils\libDetour;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppExceptions>true</CppExceptions>
       <CppLanguageStd>Cpp17</CppLanguageStd>
     </ClCompile>
@@ -87,7 +87,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <OptimizationLevel>Level2</OptimizationLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)External\StubMaker\Include;$(SolutionDir)External\FusionShared;$(SolutionDir)External\libFusionDriver\Include;$(SolutionDir)External\libUtils\libUtils;$(SolutionDir)External\libUtils\libDetour;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\StubMaker\Include;$(SolutionDir)External\libFusionDriver\External\FusionShared;$(SolutionDir)External\libFusionDriver\Include;$(SolutionDir)External\libUtils\libUtils;$(SolutionDir)External\libUtils\libDetour;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CppExceptions>true</CppExceptions>
       <CppLanguageStd>Cpp17</CppLanguageStd>
     </ClCompile>

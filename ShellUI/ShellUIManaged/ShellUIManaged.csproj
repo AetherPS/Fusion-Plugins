@@ -94,499 +94,375 @@
   <ItemGroup>
     <Reference Include="app">
       <HintPath>..\..\Scripts\lib\app.exe</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="JSC.Net">
       <HintPath>..\..\Scripts\lib\JSC.Net.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json.PlayStation">
       <HintPath>..\..\Scripts\lib\Newtonsoft.Json.PlayStation.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="platform">
       <HintPath>..\..\Scripts\lib\platform.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.Components.Vsh">
       <HintPath>..\..\Scripts\lib\ReactNative.Components.Vsh.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.Debug.DevSupport">
       <HintPath>..\..\Scripts\lib\ReactNative.Debug.DevSupport.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.Modules.Vsh">
       <HintPath>..\..\Scripts\lib\ReactNative.Modules.Vsh.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.Modules.Vsh.Gct.Telemetry">
       <HintPath>..\..\Scripts\lib\ReactNative.Modules.Vsh.Gct.Telemetry.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.Modules.Vsh.Gct.Telemetry2">
       <HintPath>..\..\Scripts\lib\ReactNative.Modules.Vsh.Gct.Telemetry2.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.PUI">
       <HintPath>..\..\Scripts\lib\ReactNative.PUI.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ReactNative.Vsh.Common">
       <HintPath>..\..\Scripts\lib\ReactNative.Vsh.Common.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Facebook.CSSLayout">
       <HintPath>..\..\Scripts\lib\Sce.Facebook.CSSLayout.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.BclExtensions">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.BclExtensions.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.Core">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.Core.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.Ime">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.Ime.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.Json">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.Json.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.Orbis">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.Orbis.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.Orbis.Speech">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.Orbis.Speech.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.PUI">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.PUI.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.PlayStation.PUIPlatform">
       <HintPath>..\..\Scripts\lib\Sce.PlayStation.PUIPlatform.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Accessor">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Accessor.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Accessor.Db">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Accessor.Db.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Accessor.Db.Notify">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Accessor.Db.Notify.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.AppContentUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.AppContentUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.AppDbWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.AppDbWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.AppInstUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.AppInstUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.AutoMounterWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.AutoMounterWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.BackupRestoreUtil">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.BackupRestoreUtil.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.CloudClient">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.CloudClient.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.DataTransfer">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.DataTransfer.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Db.Shared">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Db.Shared.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.DbPreparationWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.DbPreparationWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.DbRecoveryUtilityWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.DbRecoveryUtilityWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.ErrorDialogUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.ErrorDialogUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.EventApp">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.EventApp.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.EventServiceWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.EventServiceWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.FileSelector">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.FileSelector.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.FileSelectorAdvance">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.FileSelectorAdvance.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Friend">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Friend.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.GameCustomData">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.GameCustomData.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.GameListRetrieverWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.GameListRetrieverWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Gls.GlsSharedMediaView">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Gls.GlsSharedMediaView.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Gls.NativeCall">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Gls.NativeCall.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.GriefReport">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.GriefReport.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.GriefReportStorage">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.GriefReportStorage.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.JsExtension">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.JsExtension.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.KernelSysWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.KernelSysWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.LncUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.LncUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Lx">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Lx.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.MarlinDownloaderWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.MarlinDownloaderWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Messages">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Messages.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Messages.DbAccessLib">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Messages.DbAccessLib.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.MimeType">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.MimeType.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.MorpheusUpdWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.MorpheusUpdWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.MyGameList">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.MyGameList.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.AppInfo">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.AppInfo.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.AppLaunchLink">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.AppLaunchLink.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.AppLaunchLink2">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.AppLaunchLink2.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Asm">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Asm.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.AuCheck">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.AuCheck.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Common">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Common.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.GameIntent">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.GameIntent.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.IdMapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.IdMapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Manager">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Manager.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Papc">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Papc.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Pbtc">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Pbtc.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.RifManager">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.RifManager.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.ServiceChecker">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.ServiceChecker.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.ServiceChecker2">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.ServiceChecker2.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Sns">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Sns.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Tmdb">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Tmdb.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Trophy">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Trophy.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Uds">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Uds.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Webapi">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Webapi.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Np.Webapi2">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Np.Webapi2.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Orbis.AbstractStorage">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Orbis.AbstractStorage.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Orbis.Bgft">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Orbis.Bgft.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Orbis.BgftAccessor">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Orbis.BgftAccessor.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Orbis.CdlgServerNpCommerce">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Orbis.CdlgServerNpCommerce.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Orbis.ContentManager">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Orbis.ContentManager.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.PartyCommon">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.PartyCommon.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Passcode">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Passcode.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.PatchCheckerClientWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.PatchCheckerClientWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.ProfileCache">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.ProfileCache.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.PsnMessageUtil">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.PsnMessageUtil.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.PsnUtil">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.PsnUtil.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Registry">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Registry.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.RequestShareScreen">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.RequestShareScreen.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.RequestShareStorageWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.RequestShareStorageWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.RnpsAppMgrWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.RnpsAppMgrWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SessionInvitation">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SessionInvitation.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.ShareGuideScene">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.ShareGuideScene.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.ShareServerPostWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.ShareServerPostWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.ShellCoreUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.ShellCoreUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Sl2.NativeQueueClient">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Sl2.NativeQueueClient.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Sl2.Sl2Client">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Sl2.Sl2Client.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Sl2.Sl2Common">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Sl2.Sl2Common.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Sl2.Sl2Deliver">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Sl2.Sl2Deliver.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SQLite">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SQLite.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SQLiteAux">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SQLiteAux.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Sticker">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Sticker.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Sticker.StickerLibAccessor">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Sticker.StickerLibAccessor.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SyscallWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SyscallWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SysfileUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SysfileUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SystemLoggerUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SystemLoggerUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SystemLoggerWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SystemLoggerWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.SysUtilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.SysUtilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.TeamChat">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.TeamChat.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.TeamChat.TeamChatAccessor">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.TeamChat.TeamChatAccessor.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Theme">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Theme.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.UpdateServiceWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.UpdateServiceWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.UsbStorageScene">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.UsbStorageScene.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.UserServiceWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.UserServiceWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.VideoPlayer">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.VideoPlayer.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.VideoRecordingWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.VideoRecordingWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.VideoServiceWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.VideoServiceWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.VoiceAndAgent">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.VoiceAndAgent.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.VoiceMsg.VoiceMsgWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.VoiceMsg.VoiceMsgWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.VrEnvironment">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.VrEnvironment.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.WebBrowser">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.WebBrowser.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Webbrowser.XdbWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Webbrowser.XdbWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.Webbrowser.XutilWrapper">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.Webbrowser.XutilWrapper.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sce.Vsh.WebViewDialog">
       <HintPath>..\..\Scripts\lib\Sce.Vsh.WebViewDialog.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
