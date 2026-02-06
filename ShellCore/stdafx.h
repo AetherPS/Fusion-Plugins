@@ -7,6 +7,10 @@
 #include <mutex>
 #include <variant>
 #include <map>
+#include <unordered_map>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
 
 // StubMaker
 #include <KernelExt.h>
@@ -19,3 +23,4 @@
 
 #include "Offsets.h"
 #include "Patches.h"
+#include "IniParser.h"

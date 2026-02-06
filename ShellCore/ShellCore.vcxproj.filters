@@ -31,5 +31,8 @@
     <ClInclude Include="Patches.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IniParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

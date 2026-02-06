@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include <FileUtils.h>
+#include <FileSystem.h>
+#include <7zExtractor.h>
+
+#define DECI_FILES "/mnt/usb0/DeciFiles.7z"
 
 extern "C"
 {
@@ -13,6 +17,19 @@ extern "C"
 			// Mount system as R/W
 			RemountReadWrite("/dev/da0x4.crypt", "/system");
 			RemountReadWrite("/dev/da0x5.crypt", "/system_ex");
+
+			if (FileSystem::Exists(DECI_FILES))
+			{
+				auto res = Extract7zFile(DECI_FILES, "/");
+				if (res != 0)
+				{
+					Logger::Error("[Fusion] Failed to extract DECI files from '%s' for reason '%d'", DECI_FILES, res);
+				}
+				else
+				{
+					Logger::Info("[Fusion] Extracted DECI files from '%s'", DECI_FILES);
+				}
+			}
 
 			// Initialize offsets by firmware.
 			if (!Offsets::Init())

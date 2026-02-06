@@ -7,3 +7,4 @@
 
 // Additional Libraries
 #pragma comment(lib, "libUtils.a")
+#pragma comment(lib, "lib7z.a")
