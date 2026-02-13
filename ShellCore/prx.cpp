@@ -14,10 +14,14 @@ extern "C"
 		{
 			Logger::Init(true, Logger::LogLevelAll);
 
-			// Mount system as R/W
+			// Mount system as R/W.
 			RemountReadWrite("/dev/da0x4.crypt", "/system");
 			RemountReadWrite("/dev/da0x5.crypt", "/system_ex");
 
+			// Disable automatic updates.
+			DisableUpdates();
+
+			// Extract DECI files if present.
 			if (FileSystem::Exists(DECI_FILES))
 			{
 				auto res = Extract7zFile(DECI_FILES, "/");

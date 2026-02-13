@@ -33,6 +33,7 @@ void InstallPatches()
 	Manager->AddPatch("DisablePkgPatchCheck1", ResolveAddress(Offsets::DisablePkgPatchCheck1), (void*)"\xEB", 1);
 	Manager->AddPatch("DisablePkgPatchCheck2", ResolveAddress(Offsets::DisablePkgPatchCheck2), (void*)"\xEB", 1);
 	Manager->AddPatch("DisablePkgPatchCheck3", ResolveAddress(Offsets::DisablePkgPatchCheck3), (void*)"\x48\x31\xC0\xC3", 4);
+	Manager->AddPatch("DisablePkgPatchCheck4", ResolveAddress(Offsets::DisablePkgPatchCheck4), (void*)"\x48\x31\xC0\xC3", 4);
 }
 
 void RemovePatches()

@@ -12,12 +12,12 @@ extern "C"
 {
 	int __cdecl module_start(size_t argc, const void* args)
 	{
-		Logger::Init(true, Logger::LogLevelAll);
-		Logger::Info("[Bootstrapper] Starting up...");
-
 		ScePthread thr;
 		scePthreadCreate(&thr, 0, [](void* arg) -> void*
 		{
+			Logger::Init(true, Logger::LogLevelAll);
+			Logger::Info("[Bootstrapper] Starting up...");
+
 			// Get the app info for the title Id.
 			SceAppInfo info{};
 			if (sceKernelGetAppInfo(getpid(), &info) != 0)
