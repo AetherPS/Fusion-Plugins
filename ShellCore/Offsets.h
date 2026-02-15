@@ -32,7 +32,7 @@ public:
 			DisablePkgPatchCheck1 = 0x00138E90;
 			DisablePkgPatchCheck2 = 0x003C5EA7;
 			DisablePkgPatchCheck3 = 0x003C8540;
-			DisablePkgPatchCheck4 = 0x002CBDF0;
+			DisablePkgPatchCheck4 = 0x00B54B70;
 
 			// DECI
 			StartDecidServer = 0x251F60;
@@ -56,7 +56,7 @@ public:
 			DisablePkgPatchCheck1 = 0x001389A0;
 			DisablePkgPatchCheck2 = 0x003CA567;
 			DisablePkgPatchCheck3 = 0x003CD7B0;
-			DisablePkgPatchCheck4 = 0x002CD5A0;
+			DisablePkgPatchCheck4 = 0x00B52560;
 
 			// DECI
 			StartDecidServer = 0x255EC0;
@@ -80,7 +80,7 @@ public:
 			DisablePkgPatchCheck1 = 0x001389A0;
 			DisablePkgPatchCheck2 = 0x003CA3A7;
 			DisablePkgPatchCheck3 = 0x003CD5F0;
-			DisablePkgPatchCheck4 = 0x002CD570;
+			DisablePkgPatchCheck4 = 0x00B53480;
 
 			// DECI
 			StartDecidServer = 0x00255E90;
@@ -104,7 +104,7 @@ public:
 			DisablePkgPatchCheck1 = 0x001389A0;
 			DisablePkgPatchCheck2 = 0x003CA3A7;
 			DisablePkgPatchCheck3 = 0x003CD5F0;
-			DisablePkgPatchCheck4 = 0x002CD570;
+			DisablePkgPatchCheck4 = 0x00B534A0;
 
 			// DECI
 			StartDecidServer = 0x00255E90;
